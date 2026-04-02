@@ -24,7 +24,7 @@ The analysis is grounded in **Entman’s (1993) Framing Theory**, focusing on fo
 #### Technical Pipeline: "LLM-as-Annotator"
 Following **Grasso, Locci & Stede (2025)**, we utilized a Human-in-the-Loop pipeline:
 * **Extraction:** Lexicon-based and dependency-cued sampling (spaCy) via the Reddit API.
-* **Annotation:** Large-scale annotation using the GPT-4o API with a Reasoning-First Strategy.
+* **Annotation:** Large-scale annotation using the GPT-5.2 API with a Reasoning-First Strategy.
 * **Validation:** The pipeline was validated against a manually adjudicated Gold Standard (N=200).
     * **Detection Agreement:** $\kappa = 0.476$ (Moderate)
     * **Thematic Framing Agreement:** $\kappa = 0.487$ (Moderate)
@@ -35,18 +35,18 @@ Following **Grasso, Locci & Stede (2025)**, we utilized a Human-in-the-Loop pipe
 ### 📊 Key Findings & Hypothesis Testing
 
 #### H1: Linguistic Packaging (Noun Labels)
-**Confirmed.** Noun-label generics (e.g., "The Boomers are...") co-occur significantly more with boosters and negative polarity than adjectival forms, facilitating the reification and "othering" of social groups.
+**Confirmed ($p = 0.0089$).** Noun-label generics (e.g., "The Boomers are...") co-occur significantly more with boosters and negative polarity than adjectival forms. This suggests that the choice of noun forms facilitates the reification and "othering" of social groups.
 
 #### H2: The Reframing Paradox (Generic vs. Specific)
-**Confirmed.** The "packaging" of a claim determines its defensibility:
+**Confirmed ($p < 0.001$).** The "packaging" of a claim determine its defensibility. Generic claims trigger significantly higher levels of disagreement and reframing:
 * **Generic Claims** act as a **Systemic Shield**; they are reframed 51.7% of the time as users shift the "Diagnostic Cause" to economic or historical contexts.
 * **Specific Anecdotes** act as an **Evidence Trap**; they are reframed only 30.0% of the time, as defenders are "trapped" by the specific facts of the event.
 
 #### H3: Hetero- vs. Auto-Stereotypes
-**Confirmed.** Hetero-stereotypes (othering) skew heavily negative (>50%), while Auto-stereotypes (self-ascription) are significantly more nuanced, often serving to mitigate or explain group behavior.
+**Confirmed ($p < 0.001$).** Hetero-stereotypes (othering) skew heavily negative (>50%), while Auto-stereotypes (self-ascription) are significantly more nuanced, often serving to mitigate or explain group behavior.
 
 #### H4: Gen X Invisibility
-**Confirmed.** Despite equal search parameters, Gen X appeared in less than 1% of validated claims, empirically confirming their status as the "Invisible Generation" in digital generational conflict.
+**Confirmed.** Despite equal search parameters, Gen X appeared as a target in only 6 out of 1,568 validated claims (< 0.4%). This empirically confirms their status as the "Invisible Generation" in digital generational conflict.
 
 ### 🛠 Taxonomy of Reframing Moves
 Our qualitative analysis identified five primary "pivots" used to redirect blame:
