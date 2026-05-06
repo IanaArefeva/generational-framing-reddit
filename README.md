@@ -8,13 +8,14 @@
 ---
 
 ### 📌 Project Overview
-This project examines how Reddit users formulate and contest generational stereotypes regarding Gen Z, Millennials, Boomers, and Gen X. By analyzing 1,568 validated claims extracted from 4,199 raw parent-reply pairs, we map the "linguistic packaging" of stereotypes and the sophisticated "reframing moves" users employ to defend their generational identity.
+This project investigates how Reddit users construct and contest generational stereotypes concerning Gen Z, Millennials, Boomers, and Gen X. By analysing 1,568 validated claims, we map the relationship between the "linguistic packaging" of stereotypes and the strategic "thematic pivots" users employ to defend their generational identity.
 
 ### 🔬 Research Questions (RQs)
-* **RQ1:** What kinds of frames appear in generational stereotype claims?
-* **RQ2:** How are stereotypes distributed by source type (auto-, hetero-, and counter-stereotypes)?
-* **RQ3:** How do users respond (stance and counter-moves such as “not all,” counterexamples, and reframing)?
-* **RQ4 (Exploratory):** How is Gen X positioned relative to the other groups?
+* **RQ1:** Which thematic frames are most common across different generational groups?
+* **RQ2:** Does the use of noun-label generics correlate with increased linguistic negativity?
+* **RQ3:** How does the level of abstraction (Generic vs. Specific) influence the success of a counter-move?
+* **RQ4:** What are the characteristic thematic transitions (pivots) used during reframing?
+* **RQ5 (Exploratory):** How is Gen X positioned within high-friction generational discourse?
 
 ---
 
@@ -22,50 +23,28 @@ This project examines how Reddit users formulate and contest generational stereo
 The analysis is grounded in **Entman’s (1993) Framing Theory**, focusing on four functions: defining problems, diagnosing causes, making moral evaluations, and suggesting remedies.
 
 #### Technical Pipeline: "LLM-as-Annotator"
-Following **Grasso, Locci & Stede (2025)**, we utilized a Human-in-the-Loop pipeline:
+Following **Grasso, Locci & Stede (2025)**, we utilised a Human-in-the-Loop pipeline:
 * **Extraction:** Lexicon-based and dependency-cued sampling (spaCy) via the Reddit API.
-* **Annotation:** Large-scale annotation using the GPT-5.2 API with a Reasoning-First Strategy.
-* **Validation:** The pipeline was validated against a manually adjudicated Gold Standard (N=200).
-    * **Detection Agreement:** $\kappa = 0.476$ (Moderate)
+* **Annotation:** Large-scale labelling using the GPT-5.2 API with a **Reasoning-First Strategy**, forcing the model to identify Entman's framing functions before assigning labels.
+* **Validation:** Validated against a manually adjudicated Gold Standard ($N=200$).
     * **Thematic Framing Agreement:** $\kappa = 0.487$ (Moderate)
-    * **Valence Agreement:** $\kappa = 0.462$ (Moderate)
+    * **Valence/Stance Agreement:** $\kappa = 0.462$ (Moderate)
 
 ---
 
-### 📊 Key Findings & Hypothesis Testing
+### 📊 Key Findings
 
-#### H1: Linguistic Packaging (Noun Labels)
-**Confirmed ($p = 0.0089$).** Noun-label generics (e.g., "The Boomers are...") co-occur significantly more with boosters and negative polarity than adjectival forms. This suggests that the choice of noun forms facilitates the reification and "othering" of social groups.
+#### 1. The Noun-Label Effect (H1)
+**Confirmed ($p = 0.0089$).** Noun-label generics (e.g., "The Boomers are...") co-occur significantly more with negative polarity than adjectival forms. This suggests that nominalisation facilitates the essentialisation and "othering" of generational groups.
 
-#### H2: The Reframing Paradox (Generic vs. Specific)
-**Confirmed ($p < 0.001$).** The "packaging" of a claim determine its defensibility. Generic claims trigger significantly higher levels of disagreement and reframing:
-* **Generic Claims** act as a **Systemic Shield**; they are reframed 51.7% of the time as users shift the "Diagnostic Cause" to economic or historical contexts.
-* **Specific Anecdotes** act as an **Evidence Trap**; they are reframed only 30.0% of the time, as defenders are "trapped" by the specific facts of the event.
+#### 2. The Reframing Paradox (H2)
+**Confirmed ($p < 0.001$).** Abstract **Generic Claims** act as "soft targets"; they trigger high disagreement but are reframed successfully 51.7% of the time. Conversely, **Specific Anecdotes** act as "evidence traps"; they are reframed only 30.0% of the time, as the granular details anchor the stereotype and make it harder to contest.
 
-#### H3: Hetero- vs. Auto-Stereotypes
-**Confirmed ($p < 0.001$).** Hetero-stereotypes (othering) skew heavily negative (>50%), while Auto-stereotypes (self-ascription) are significantly more nuanced, often serving to mitigate or explain group behavior.
+#### 3. Strategic Move Matrix: Frame Transitions (RQ4)
+Our transition analysis reveals how users "move the goalposts" during an argument:
+* **High-Stability Frames:** Ideological and structural topics like *Values/Politics* (81.0%) and *Work/Economy* (71.7%) are highly "sticky." Users tend to fight these stereotypes on their own thematic terrain.
+* **High-Volatility Pivots:** Behavioural frames like *Competence* are the most unstable (only 26.3% retention). Responders frequently pivot to *Values/Politics* (36.8%), reframing a lack of skill as a symptom of a broader ideological clash.
+* **The Meta Shield:** Users frequently pivot to *Meta/Identity* frames (up to 30.3% of the time) to challenge the validity of generational labels themselves rather than the content of the stereotype.
 
-#### H4: Gen X Invisibility
-**Confirmed.** Despite equal search parameters, Gen X appeared as a target in only 6 out of 1,568 validated claims (< 0.4%). This empirically confirms their status as the "Invisible Generation" in digital generational conflict.
-
-### 🛠 Taxonomy of Reframing Moves
-Our qualitative analysis identified five primary "pivots" used to redirect blame:
-* **Systemic Shield:** Shifting cause to market forces (e.g., housing prices). Found in 30% of Economic reframes.
-* **Information Shift:** Blaming the media ecosystem/algorithms. Found in 26% of Tech reframes.
-* **Historical Context:** Explaining behavior through the era/upbringing of the group.
-* **Individual Condition:** Pathologizing behavior as an individual trait (e.g., ADHD).
-* **Empathy Pivot:** Shifting focus to shared human struggles or tragic loss.
-
----
-
-### 📂 Repository Structure
-
-```plaintext
-├── data/                    # Samples of raw and annotated JSONL/CSV files
-├── notebooks/               # Kaggle notebooks for extraction and analysis
-├── visualizations/          # Heatmaps, Bar charts, and the Reframing Matrix
-├── README.md                # Project overview and findings
-
----
-
-*This project was completed as part of the Intermediate Module (IM) in Cognitive Systems at the University of Potsdam.*
+#### 4. Gen X Invisibility (H5)
+**Confirmed.** Despite equal search parameters, Gen X appeared as a target in less than 0.4% of validated claims. This empirically identifies a process of **framing through omission**, where Gen X is largely excluded from the high-friction "battleground" of digital generational conflict.
